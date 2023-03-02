@@ -1,0 +1,6 @@
+type DadosUsuario @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  nascimento: AWSDate
+  celular: String
+  foto: AWSURL
+} 

@@ -1,0 +1,20 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-curriculosrv2-dev-231811-authRole",
+      "UnauthRoleArn": "arn:aws:iam::675550785041:role/amplify-curriculosrv2-dev-231811-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::675550785041:role/amplify-curriculosrv2-dev-231811-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-curriculosrv2-dev-231811-deployment",
+      "UnauthRoleName": "amplify-curriculosrv2-dev-231811-unauthRole",
+      "StackName": "amplify-curriculosrv2-dev-231811",
+      "StackId": "arn:aws:cloudformation:us-east-1:675550785041:stack/amplify-curriculosrv2-dev-231811/8310b6a0-b499-11ed-b6b4-0a2b68d41447",
+      "AmplifyAppId": "d3siwku701mbez"
+    },
+    "categories": {
+      "auth": {
+        "curriculosrv2": {}
+      }
+    }
+  }
+}

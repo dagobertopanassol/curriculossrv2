@@ -60,7 +60,7 @@ export const schema = {
                     "properties": {
                         "rules": [
                             {
-                                "allow": "public",
+                                "allow": "owner",
                                 "operations": [
                                     "create",
                                     "update",

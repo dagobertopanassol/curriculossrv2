@@ -1,26 +1,30 @@
 //import logo from './logo.svg';
 import './App.css';
 import '@aws-amplify/ui-react/styles.css';
-import { Amplify, Auth  } from 'aws-amplify';
+import { Amplify  } from 'aws-amplify';
 import { withAuthenticator } from '@aws-amplify/ui-react';
 //Dados e Model //Componentes //import {  EditProfile  } from './ui-components'; //import Button from './components/Button'; import {  EditProfileCollection  } from './ui-components';
 import {  NavBar  } from './ui-components';
-import Lista from './components/Lista';
+//import Lista from './consultas/Lista';
+import Button from './components/Button'
 
 import awsExports from './aws-exports';
 Amplify.configure(awsExports);
 
-function App({signOut, user}) {    
+function App( {signOut, user} ) {    
 
   return (
     <div className="App">
       <h1>Bem Vindo  {user.username}</h1>
       <NavBar></NavBar>
-      <Lista/>
-
+      
       <button onClick={signOut}>Sair</button>
+      <Button title="Titulo1" user = {user.username}></Button>
+      {
+      //Lista('testeeeeeeeeeeeeeeee')
+          
 
-      {/* <header className="App-header">
+      /* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
            Celular:  
@@ -34,9 +38,8 @@ function App({signOut, user}) {
           Learn React
         </a>
           <Button>--</Button>
-      </header> */}
-
-    
+      </header> */
+      }   
  
     </div>
   );
@@ -51,4 +54,5 @@ function App({signOut, user}) {
 }
 
 //export default App;
+
 export default withAuthenticator(App);

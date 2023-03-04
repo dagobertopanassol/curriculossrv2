@@ -5,7 +5,7 @@ import reportWebVitals from './reportWebVitals';
 //
 import { Amplify, Auth } from "aws-amplify";
 import awsconfig from "./aws-exports";
-//Form UI Auth //import { ThemeProvider, AmplifyProvider } from "@aws-amplify/ui-react";
+//F7orm UI Auth //import { ThemeProvider, AmplifyProvider } from "@aws-amplify/ui-react";
 import { AmplifyProvider } from "@aws-amplify/ui-react";
 import "@aws-amplify/ui-react/styles.css"; //import { studioTheme } from "./ui-components";
 Amplify.configure(awsconfig);

@@ -4,9 +4,14 @@ import '@aws-amplify/ui-react/styles.css';
 import { Amplify  } from 'aws-amplify';
 import { withAuthenticator } from '@aws-amplify/ui-react';
 //Dados e Model //Componentes //import {  EditProfile  } from './ui-components'; //import Button from './components/Button'; import {  EditProfileCollection  } from './ui-components';
+
+//componentes
 import {  NavBar  } from './ui-components';
 //import Lista from './consultas/Lista';
 import Button from './components/Button'
+
+
+
 
 import awsExports from './aws-exports';
 Amplify.configure(awsExports);

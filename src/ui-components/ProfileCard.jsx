@@ -6,11 +6,19 @@
 
 /* eslint-disable */
 import * as React from "react";
-import { getOverrideProps } from "@aws-amplify/ui-react/internal";
+import {
+  getOverrideProps,
+  useNavigateAction,
+} from "@aws-amplify/ui-react/internal";
 import { Button, Flex, Image, Text } from "@aws-amplify/ui-react";
 import MyIcon from "./MyIcon";
 export default function ProfileCard(props) {
-  const { overrides, ...rest } = props;
+  const { DadosUsuario, dadosUsuario, overrides, ...rest } = props;
+  const buttonOnClick = useNavigateAction({
+    target: "_blank",
+    type: "url",
+    url: "https://www.linkedin.com/in/dagoberto-panassol/",
+  });
   return (
     <Flex
       gap="24px"
@@ -69,7 +77,7 @@ export default function ProfileCard(props) {
           position="relative"
           padding="0px 0px 0px 0px"
           whiteSpace="pre-wrap"
-          children="Melinda Marcus"
+          children={dadosUsuario?.id}
           {...getOverrideProps(overrides, "Melinda Marcus")}
         ></Text>
         <Text
@@ -140,7 +148,7 @@ export default function ProfileCard(props) {
           position="relative"
           padding="0px 0px 0px 0px"
           whiteSpace="pre-wrap"
-          children="99 Followers"
+          children={dadosUsuario?.celular}
           {...getOverrideProps(overrides, "99 Followers")}
         ></Text>
       </Flex>
@@ -152,7 +160,10 @@ export default function ProfileCard(props) {
         size="large"
         isDisabled={false}
         variation="primary"
-        children="View Profile"
+        children="Linkedin"
+        onClick={() => {
+          buttonOnClick();
+        }}
         {...getOverrideProps(overrides, "Button")}
       ></Button>
     </Flex>

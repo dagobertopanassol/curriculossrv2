@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client'; //import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 // https://frontsrv2.d3siwku701mbez.amplifyapp.com/
-import { Amplify, Auth } from "aws-amplify";
+import { Amplify } from "aws-amplify";
 import awsconfig from "./aws-exports";
 //F7orm UI Auth //
 import { ThemeProvider, AmplifyProvider } from "@aws-amplify/ui-react"; // ThemeProvider To syncRONIZA your changes locally com FigmaCloud

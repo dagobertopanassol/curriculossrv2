@@ -5,7 +5,7 @@
  **************************************************************************/
 
 import * as React from "react";
-import { DadosUsuario } from "../models";
+import { Job } from "../models";
 import { EscapeHatchProps } from "@aws-amplify/ui-react/internal";
 import { ButtonProps, DividerProps, FlexProps, IconProps, ImageProps, TextFieldProps, TextProps, ViewProps } from "@aws-amplify/ui-react";
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
@@ -28,7 +28,7 @@ export declare type EditProfileOverridesProps = {
     Button?: PrimitiveOverrideProps<ButtonProps>;
 } & EscapeHatchProps;
 export declare type EditProfileProps = React.PropsWithChildren<Partial<FlexProps> & {
-    dadosUsuario?: DadosUsuario;
+    JobModel?: Job;
 } & {
     overrides?: EditProfileOverridesProps | undefined | null;
 }>;

@@ -6,7 +6,14 @@
 
 /* eslint-disable */
 import * as React from "react";
-import { getOverrideProps } from "@aws-amplify/ui-react/internal";
+import { Job } from "../models";
+import {
+  getOverrideProps,
+  useDataStoreUpdateAction,
+  useStateMutationAction,
+} from "@aws-amplify/ui-react/internal";
+import { schema } from "../models/schema";
+import { useEffect } from "react";
 import {
   Button,
   Divider,
@@ -18,7 +25,42 @@ import {
   View,
 } from "@aws-amplify/ui-react";
 export default function EditProfile(props) {
-  const { dadosUsuario, overrides, ...rest } = props;
+  const { JobModel, overrides, ...rest } = props;
+  const [
+    textFieldTwoNineSevenSixSixNineTwoTwoValue,
+    setTextFieldTwoNineSevenSixSixNineTwoTwoValue,
+  ] = useStateMutationAction("");
+  const [
+    textFieldTwoNineSevenSixSixNineTwoThreeValue,
+    setTextFieldTwoNineSevenSixSixNineTwoThreeValue,
+  ] = useStateMutationAction("");
+  const buttonOnClick = useDataStoreUpdateAction({
+    fields: {
+      position: textFieldTwoNineSevenSixSixNineTwoTwoValue,
+      rate: textFieldTwoNineSevenSixSixNineTwoTwoValue,
+      description: textFieldTwoNineSevenSixSixNineTwoThreeValue,
+      owner: textFieldTwoNineSevenSixSixNineTwoThreeValue,
+    },
+    id: JobModel?.id,
+    model: Job,
+    schema: schema,
+  });
+  useEffect(() => {
+    if (
+      textFieldTwoNineSevenSixSixNineTwoTwoValue === "" &&
+      JobModel !== undefined &&
+      JobModel?.position !== undefined
+    )
+      setTextFieldTwoNineSevenSixSixNineTwoTwoValue(JobModel?.position);
+  }, [JobModel]);
+  useEffect(() => {
+    if (
+      textFieldTwoNineSevenSixSixNineTwoThreeValue === "" &&
+      JobModel !== undefined &&
+      JobModel?.rate !== undefined
+    )
+      setTextFieldTwoNineSevenSixSixNineTwoThreeValue(JobModel?.rate);
+  }, [JobModel]);
   return (
     <Flex
       gap="16px"
@@ -192,7 +234,7 @@ export default function EditProfile(props) {
           <TextField
             width="unset"
             height="unset"
-            label="Celular"
+            label="Position"
             placeholder="John Doe"
             shrink="0"
             alignSelf="stretch"
@@ -200,13 +242,16 @@ export default function EditProfile(props) {
             isDisabled={false}
             labelHidden={false}
             variation="default"
-            value={dadosUsuario?.celular}
+            value={textFieldTwoNineSevenSixSixNineTwoTwoValue}
+            onChange={(event) => {
+              setTextFieldTwoNineSevenSixSixNineTwoTwoValue(event.target.value);
+            }}
             {...getOverrideProps(overrides, "TextField29766922")}
           ></TextField>
           <TextField
             width="unset"
             height="unset"
-            label="Nascimento"
+            label="Rate"
             placeholder="Seattle, WA"
             shrink="0"
             alignSelf="stretch"
@@ -214,13 +259,18 @@ export default function EditProfile(props) {
             isDisabled={false}
             labelHidden={false}
             variation="default"
-            value={dadosUsuario?.nascimento}
+            value={textFieldTwoNineSevenSixSixNineTwoThreeValue}
+            onChange={(event) => {
+              setTextFieldTwoNineSevenSixSixNineTwoThreeValue(
+                event.target.value
+              );
+            }}
             {...getOverrideProps(overrides, "TextField29766923")}
           ></TextField>
           <TextField
             width="unset"
             height="unset"
-            label="Foto URL"
+            label="Description"
             placeholder="john.doe@awsamplify.com"
             shrink="0"
             alignSelf="stretch"
@@ -228,7 +278,7 @@ export default function EditProfile(props) {
             isDisabled={false}
             labelHidden={false}
             variation="default"
-            value={dadosUsuario?.foto}
+            value={JobModel?.description}
             {...getOverrideProps(overrides, "TextField29766924")}
           ></TextField>
         </Flex>
@@ -249,6 +299,9 @@ export default function EditProfile(props) {
           isDisabled={false}
           variation="primary"
           children="Save"
+          onClick={() => {
+            buttonOnClick();
+          }}
           {...getOverrideProps(overrides, "Button")}
         ></Button>
       </Flex>

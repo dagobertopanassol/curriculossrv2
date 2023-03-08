@@ -5,6 +5,7 @@
  **************************************************************************/
 
 export { default as FormCheckout } from "./FormCheckout";
+export { default as EditProfileCollectionJobs } from "./EditProfileCollectionJobs";
 export { default as StandardCard } from "./StandardCard";
 export { default as HeroLayout2 } from "./HeroLayout2";
 export { default as NavBar } from "./NavBar";
@@ -36,5 +37,7 @@ export { default as HeroLayout4 } from "./HeroLayout4";
 export { default as CommentCard } from "./CommentCard";
 export { default as DadosDiplomas } from "./DadosDiplomas";
 export { default as studioTheme } from "./studioTheme";
+export { default as JobCreateForm } from "./JobCreateForm";
 export { default as DadosUsuarioCreateForm } from "./DadosUsuarioCreateForm";
 export { default as DadosUsuarioUpdateForm } from "./DadosUsuarioUpdateForm";
+export { default as JobUpdateForm } from "./JobUpdateForm";

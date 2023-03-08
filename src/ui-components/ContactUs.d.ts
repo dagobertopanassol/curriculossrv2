@@ -5,6 +5,7 @@
  **************************************************************************/
 
 import * as React from "react";
+import { DadosUsuario, Job } from "../models";
 import { EscapeHatchProps } from "@aws-amplify/ui-react/internal";
 import { ButtonProps, FlexProps, IconProps, SelectFieldProps, TextFieldProps, TextProps, ViewProps } from "@aws-amplify/ui-react";
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
@@ -34,6 +35,9 @@ export declare type ContactUsOverridesProps = {
     Twitter?: PrimitiveOverrideProps<TextProps>;
 } & EscapeHatchProps;
 export declare type ContactUsProps = React.PropsWithChildren<Partial<FlexProps> & {
+    dadosUsuario?: DadosUsuario;
+    job?: Job;
+} & {
     overrides?: ContactUsOverridesProps | undefined | null;
 }>;
 export default function ContactUs(props: ContactUsProps): React.ReactElement;

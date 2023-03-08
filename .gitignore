@@ -1,5 +1,9 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 #/projetos/reactjs/curriculosrv2/ https://frontsrv2.d3siwku701mbez.amplifyapp.com/
+# async https://codesandbox.io/embed/async-onclick-handler-1fpb3?autoresize=1&fontsize=14&hidenavigation=1&module=%2Fsrc%2FButton.js&theme=dark
+#ignore
+/privateNotes
+
 
 # dependencies
 /node_modules

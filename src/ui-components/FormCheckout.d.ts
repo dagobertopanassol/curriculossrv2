@@ -5,6 +5,7 @@
  **************************************************************************/
 
 import * as React from "react";
+import { Job } from "../models";
 import { EscapeHatchProps } from "@aws-amplify/ui-react/internal";
 import { BadgeProps, ButtonProps, DividerProps, FlexProps, TextFieldProps, TextProps } from "@aws-amplify/ui-react";
 import { MyIconProps } from "./MyIcon";
@@ -47,6 +48,9 @@ export declare type FormCheckoutOverridesProps = {
     Button?: PrimitiveOverrideProps<ButtonProps>;
 } & EscapeHatchProps;
 export declare type FormCheckoutProps = React.PropsWithChildren<Partial<FlexProps> & {
+    job?: Job;
+    rate?: String;
+} & {
     overrides?: FormCheckoutOverridesProps | undefined | null;
 }>;
 export default function FormCheckout(props: FormCheckoutProps): React.ReactElement;

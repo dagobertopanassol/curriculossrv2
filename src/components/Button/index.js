@@ -1,6 +1,7 @@
 import { Component } from "react";
 import React from 'react';
 import { ActionCard,ContactUs } from '../../ui-components'
+import { useState } from 'react'
 
 //import Lista from '../../consultas/Lista';
 import { API,graphqlOperation } from '@aws-amplify/api'
@@ -20,21 +21,21 @@ class Button extends Component {
             {/* <button>Salvar - {this.props.children} - {this.props.user}  </button> */}
             <button onClick= { Alerta } > Alerta </button>
             <button onClick = {graphql1 }>graphql1</button>
-            <button onClick = {getUser2} > getUser2 </button>
-
-                <div className='container'>
+            <button onClick = { updateItem }>acao3</button>
+                      
+                {/* <div className='container'>
                     <ContactUs />  
                 </div>
                 <div className='modal' style={{display: 'none'}}>
                     <ActionCard />
-                </div>
+                </div> */}
           
 
             </div>
-        )
-    }
+        )//return
+    }//render
 
-}
+}//classe
 //https://amplify.aws/learn/courses/Fullstack-for-Frontend-Developers-e7319/lessons/8
 function Alerta () {
     console.log("func Alerta")
@@ -88,6 +89,26 @@ async function graphql1(user) {
    function getUser3(userId) {
     const userData = fetch(`http://localhost/api/user/${userId}`);return userData.name; 
    };
+    // erro 
+   async function updateItem(id, newFieldValue) {
+    try {
+      const itemData = await API.graphql({
+        query: (''),
+        variables: {
+          input: {
+            id: 'texto1',
+            newField: 'valor novo do catch'
+          }
+        }
+      });
+      console.log('Item atualizado com sucesso!', itemData);
+    } catch (err) {
+      console.log('Ocorreu um erro ao atualizar o item', err);
+      
+      
+    }
+  }
+  
    //getUser3(1).then(mostra('ok')).catch(mostraerro())
    //Em termos de sintaxe, o método .then() traz uma sintaxe que faz mais sentido quando utilizamos o JavaScript de forma funcional, enquanto o fluxo das declarações com async/await fazem sentido ao serem utilizadas em métodos de classes.
    /*async function getAndPrintAllCustomers() {

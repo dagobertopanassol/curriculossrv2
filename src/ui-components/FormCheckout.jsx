@@ -6,7 +6,14 @@
 
 /* eslint-disable */
 import * as React from "react";
-import { getOverrideProps } from "@aws-amplify/ui-react/internal";
+import { Job } from "../models";
+import {
+  getOverrideProps,
+  useDataStoreUpdateAction,
+  useStateMutationAction,
+} from "@aws-amplify/ui-react/internal";
+import { schema } from "../models/schema";
+import { useEffect } from "react";
 import {
   Badge,
   Button,
@@ -17,7 +24,53 @@ import {
 } from "@aws-amplify/ui-react";
 import MyIcon from "./MyIcon";
 export default function FormCheckout(props) {
-  const { overrides, ...rest } = props;
+  const { job, rate, overrides, ...rest } = props;
+  const [
+    textFieldTwoNineSevenSixSevenZeroZeroNineValue,
+    setTextFieldTwoNineSevenSixSevenZeroZeroNineValue,
+  ] = useStateMutationAction("");
+  const [
+    textFieldTwoNineSevenSixSevenZeroOneZeroValue,
+    setTextFieldTwoNineSevenSixSevenZeroOneZeroValue,
+  ] = useStateMutationAction("");
+  const [
+    textFieldTwoNineSevenSixSevenZeroOneFourValue,
+    setTextFieldTwoNineSevenSixSevenZeroOneFourValue,
+  ] = useStateMutationAction("");
+  const buttonOnClick = useDataStoreUpdateAction({
+    fields: {
+      position: textFieldTwoNineSevenSixSevenZeroZeroNineValue,
+      rate: textFieldTwoNineSevenSixSevenZeroOneZeroValue,
+      description: textFieldTwoNineSevenSixSevenZeroOneFourValue,
+    },
+    id: job?.id,
+    model: Job,
+    schema: schema,
+  });
+  useEffect(() => {
+    if (
+      textFieldTwoNineSevenSixSevenZeroZeroNineValue === "" &&
+      job !== undefined &&
+      job?.position !== undefined
+    )
+      setTextFieldTwoNineSevenSixSevenZeroZeroNineValue(job?.position);
+  }, [job]);
+  useEffect(() => {
+    if (
+      textFieldTwoNineSevenSixSevenZeroOneZeroValue === "" &&
+      job !== undefined &&
+      job?.rate !== undefined
+    )
+      setTextFieldTwoNineSevenSixSevenZeroOneZeroValue(job?.rate);
+  }, [job]);
+  useEffect(() => {
+    if (
+      textFieldTwoNineSevenSixSevenZeroOneFourValue === "" &&
+      job !== undefined &&
+      job?.description !== undefined
+    )
+      setTextFieldTwoNineSevenSixSevenZeroOneFourValue(job?.description);
+  }, [job]);
   return (
     <Flex
       gap="24px"
@@ -97,7 +150,7 @@ export default function FormCheckout(props) {
             <TextField
               width="unset"
               height="unset"
-              label="Name"
+              label="Position"
               shrink="0"
               alignSelf="stretch"
               placeholder="Placeholder"
@@ -105,19 +158,31 @@ export default function FormCheckout(props) {
               isDisabled={false}
               labelHidden={false}
               variation="default"
+              value={textFieldTwoNineSevenSixSevenZeroZeroNineValue}
+              onChange={(event) => {
+                setTextFieldTwoNineSevenSixSevenZeroZeroNineValue(
+                  event.target.value
+                );
+              }}
               {...getOverrideProps(overrides, "TextField29767009")}
             ></TextField>
             <TextField
               width="unset"
               height="unset"
-              label="Title"
+              label="RAte"
               shrink="0"
               alignSelf="stretch"
-              placeholder="Placeholder"
+              placeholder={rate}
               size="large"
               isDisabled={false}
               labelHidden={false}
               variation="default"
+              value={textFieldTwoNineSevenSixSevenZeroOneZeroValue}
+              onChange={(event) => {
+                setTextFieldTwoNineSevenSixSevenZeroOneZeroValue(
+                  event.target.value
+                );
+              }}
               {...getOverrideProps(overrides, "TextField29767010")}
             ></TextField>
           </Flex>
@@ -167,7 +232,7 @@ export default function FormCheckout(props) {
             <TextField
               width="unset"
               height="unset"
-              label="Street address"
+              label="Descrição"
               shrink="0"
               alignSelf="stretch"
               placeholder="Placeholder"
@@ -175,6 +240,12 @@ export default function FormCheckout(props) {
               isDisabled={false}
               labelHidden={false}
               variation="default"
+              value={textFieldTwoNineSevenSixSevenZeroOneFourValue}
+              onChange={(event) => {
+                setTextFieldTwoNineSevenSixSevenZeroOneFourValue(
+                  event.target.value
+                );
+              }}
               {...getOverrideProps(overrides, "TextField29767014")}
             ></TextField>
             <TextField
@@ -565,6 +636,9 @@ export default function FormCheckout(props) {
           isDisabled={false}
           variation="primary"
           children="Place Order"
+          onClick={() => {
+            buttonOnClick();
+          }}
           {...getOverrideProps(overrides, "Button")}
         ></Button>
       </Flex>
